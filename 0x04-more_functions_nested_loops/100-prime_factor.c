@@ -1,35 +1,29 @@
-#include <stdio.h>
+nclude <stdio.h>
 
 /**
- * main - Prints the numbers from 1-100, but for multiples of three,
- * Fizz is printed instead of the number, for multiples of five,
- * uzz, and for multiples of both three and five, FizzBuzz.
+ * main - Finds and prints the largest prime factor of the number 612852475143.
  * Return: Always 0.
  */
 int main(void)
 {
-	int num;
+	long prime = 612852475143, div;
 
-	for (num = 1; num <= 100; num++)
+	while (div < (prime / 2))
 	{
-		if ((num % 3) == 0 && (num % 5) == 0)
-			printf("FizzBuzz");
-
-		else if ((num % 3) == 0)
-			printf("Fizz");
-
-		else if ((num % 5) == 0)
-			printf("Buzz");
-
-		else
-			printf("%d", num);
-
-		if (num == 100)
+		if ((prime % 2) == 0)
+		{
+			prime /= 2;
 			continue;
-		printf(" ");
+		}
+		for (div = 3; div < (prime / 2); div += 2)
+		{
+			if ((prime % div) == 0)
+				prime /= div;
+		}
 	}
 
-	printf("\n");
+	printf("%ld\n", prime);
 
 	return (0);
 }
+
